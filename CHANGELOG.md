@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.103.0](https://github.com/openfoodfacts/openfoodfacts-server/compare/v2.102.0...v2.103.0) (2026-08-17)
+
+
+### Features
+
+* localized vignettes mobile app ([6abf196](https://github.com/openfoodfacts/openfoodfacts-server/commit/6abf196e594aea34a4fe0a21bf250b2a97acb65e))
+* localized vignettes mobile app ([#14273](https://github.com/openfoodfacts/openfoodfacts-server/issues/14273)) ([6abf196](https://github.com/openfoodfacts/openfoodfacts-server/commit/6abf196e594aea34a4fe0a21bf250b2a97acb65e))
+
+
+### Bug Fixes
+
+* [#1587](https://github.com/openfoodfacts/openfoodfacts-server/issues/1587) week and month name double utf8 encoding ([#14272](https://github.com/openfoodfacts/openfoodfacts-server/issues/14272)) ([2abbd94](https://github.com/openfoodfacts/openfoodfacts-server/commit/2abbd9472c660b75383af20f625d7ed97974cb83))
+* [#4431](https://github.com/openfoodfacts/openfoodfacts-server/issues/4431) Filtered taxonomy link to world results loses filter ([#14268](https://github.com/openfoodfacts/openfoodfacts-server/issues/14268)) ([c3b9a13](https://github.com/openfoodfacts/openfoodfacts-server/commit/c3b9a132afc0bbc0bcad548809124d8d2bdd3a80))
+* **beauty categories:** duplicate synonyms, missing en: names and fr translations ([#14274](https://github.com/openfoodfacts/openfoodfacts-server/issues/14274)) ([548f5d3](https://github.com/openfoodfacts/openfoodfacts-server/commit/548f5d34fac905d2dba09b0326fdd20d5ffa062f))
+* Hide nutrition section from Open Beauty Facts product edit form ([#14270](https://github.com/openfoodfacts/openfoodfacts-server/issues/14270)) ([7051fd4](https://github.com/openfoodfacts/openfoodfacts-server/commit/7051fd4a946b3abc6fc27de9cdcb07a4dc532623))
+
+
+### Reverts
+
+* ci(pr_actions): deduplicate the git commit step(s) ([#14264](https://github.com/openfoodfacts/openfoodfacts-server/issues/14264)) ([99f9784](https://github.com/openfoodfacts/openfoodfacts-server/commit/99f9784f99238934992d866720c092765da8d149))
+
 ## [2.102.0](https://github.com/openfoodfacts/openfoodfacts-server/compare/v2.101.0...v2.102.0) (2026-08-13)
 
 
