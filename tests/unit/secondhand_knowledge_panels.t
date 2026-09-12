@@ -8,6 +8,8 @@ use Log::Any::Adapter 'TAP';
 
 use ProductOpener::Config qw/:all/;
 use ProductOpener::KnowledgePanels;
+use ProductOpener::Lang qw/$lc/;
+use ProductOpener::Web qw/display_knowledge_panel/;
 
 $options{product_type} = 'product';
 
@@ -60,6 +62,39 @@ $options{product_type} = 'product';
 		{category_name => "Test category", has_category => 1},
 		"pass the category data to the secondhand card"
 	);
+}
+
+# Exercise the real JSON and HTML templates: the mocked tests above cannot
+# detect a missing nudge or a broken link in the rendered card.
+{
+	local $lc = 'en';
+	foreach my $categories (undef, []) {
+		my $product_ref = {code => '1234567890123', knowledge_panels_en => {}};
+		$product_ref->{categories_tags} = $categories if defined $categories;
+		ProductOpener::KnowledgePanels::create_secondhand_card_panel($product_ref, 'en', 'us', {}, {lc => 'en'});
+		my $panels_ref = $product_ref->{knowledge_panels_en};
+		is(
+			$panels_ref->{secondhand_card}{elements},
+			[
+				{
+					element_type => 'action',
+					action_element => {
+						html => 'Add a category to discover secondhand options.',
+						actions => ['add_categories'],
+					},
+				}
+			],
+			'uncategorized product exposes the category nudge as a Knowledge Panel action'
+		);
+		my $html = display_knowledge_panel($product_ref, $panels_ref, 'secondhand_card');
+		like($html, qr/Add a category to discover secondhand options\./, 'render the nudge text');
+		like(
+			$html,
+			qr{href="/cgi/product\.pl\?type=edit&code=1234567890123\#categories"},
+			'link the action to the Categories field'
+		);
+		like($html, qr/>\s*Add a category\s*<\/a>/, 'render the category action button');
+	}
 }
 
 done_testing();
